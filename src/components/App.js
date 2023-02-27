@@ -1,7 +1,8 @@
-// import {data} from '../data';
+import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCart from './MovieCart';
 import React from 'react';
+import { addMovies } from '../actions';
 class App extends React.Component {
 
 componentDidMount(){
@@ -12,14 +13,11 @@ componentDidMount(){
   });
   //make api call
 //dispatch action
-store.dispatch({
-  type:'ADD_MOVIES',
-  movies:data
-});
+store.dispatch(addMovies(data));
 }
 
   render(){
-    const movies=this.props.store.getState();
+    const {list}=this.props.store.getState();
     console.log("RENDER");
     return (
       <div className="App">
@@ -30,7 +28,7 @@ store.dispatch({
           <div className="tab">Favorite</div>
         </div>
         <div className="list">
-          {data.map((movie,index) =>(
+          {list.map((movie,index) =>(
             <MovieCart movie={movie} key={`movies-${index}`}/>
           ))}
         </div>
