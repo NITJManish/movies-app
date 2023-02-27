@@ -1,4 +1,4 @@
-import {data} from '../data';
+// import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCart from './MovieCart';
 import React from 'react';
